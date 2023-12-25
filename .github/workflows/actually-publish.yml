@@ -1,0 +1,25 @@
+name: 'Actually publish PR'
+
+on:
+  workflow_run:
+    workflows: [Publish PRs]
+    types:
+      - completed
+
+permissions:
+  packages: write
+  actions: read
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload
+        uses: ForgeForce/action-pr-publishing@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          artifacts_base_path: net/neoforged/neoforge/
