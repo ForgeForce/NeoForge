@@ -8,7 +8,8 @@ on:
 
 permissions:
   packages: write
-  actions: read
+  actions: write
+  checks: write
   contents: write # Write for commit comments
   issues: write
   pull-requests: write
@@ -22,4 +23,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          artifacts_base_path: net/neoforged/neoforge/
+          artifacts-base-path: net/neoforged/neoforge/
