@@ -24,3 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           artifacts-base-path: net/neoforged/neoforge/
+          publishing-token: ${{ secrets.GITHUB_TOKEN }}
