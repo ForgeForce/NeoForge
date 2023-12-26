@@ -33,4 +33,4 @@ jobs:
         with:
           arguments: :neoforge:setup
       
-      - uses: ForgeForce/action-pr-publishing/upload@main
+      - uses: ForgeForce/action-pr-publishing/upload@mainff
