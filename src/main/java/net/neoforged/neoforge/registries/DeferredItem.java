@@ -18,12 +18,6 @@ import net.minecraft.world.level.ItemLike;
  * @param <T> The specific {@link Item} type.
  */
 public class DeferredItem<T extends Item> extends DeferredHolder<Item, T> implements ItemLike {
-    /**
-     * Creates a new {@link ItemStack} with a default size of 1 from this {@link Item}
-     */
-    public ItemStack toStack() {
-        return toStack(1);
-    }
 
     /**
      * Creates a new {@link ItemStack} with the given size from this {@link Item}
