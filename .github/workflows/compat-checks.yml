@@ -1,0 +1,35 @@
+name: 'Actually run PR compat checks'
+
+on:
+  workflow_run:
+    workflows: [Build PRs]
+    types:
+      - completed
+
+permissions:
+  packages: write
+  actions: write
+  contents: write
+  issues: write
+  checks: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate an Application repository access token
+        id: gen_repo_token
+        uses: kattecon/gh-app-access-token-gen@v1
+        with:
+          app_id: 750463
+          private_key: ${{ secrets.PR_PUBLISHING_APP_KEY }}
+          repository: forgeforce/gradle-actions-test
+      - name: Check PR compat
+        uses: ForgeForce/action-jar-compatibility@main
+        with:
+          self-name: 'forgeforce-pr-publishing[bot]'
+          beta-version-pattern: 30.+
+        env:
+          GITHUB_TOKEN: ${{ steps.gen_repo_token.outputs.token }}

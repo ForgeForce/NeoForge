@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   publish-prs:
-    if: true
+    if: false
     uses: neoforged/actions/.github/workflows/publish-prs.yml@main
     with:
       artifact_base_path: net/neoforged/neoforge/|net/neoforged/testframework/
